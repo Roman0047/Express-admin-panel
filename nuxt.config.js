@@ -20,6 +20,7 @@ export default {
 
   plugins: [
     '~/plugins/services',
+    '~/plugins/utils',
   ],
 
   components: true,
@@ -32,7 +33,25 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
+    '@nuxtjs/auth',
   ],
+
+  auth: {
+    watchLoggedIn: true,
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/login', method: 'post', propertyName: 'token' },
+          user: { url: '/api/profile', method: 'get', propertyName: 'user' },
+          logout: false
+        },
+      }
+    },
+    redirect: {
+      home: '/',
+      logout: '/login'
+    }
+  },
 
   pwa: {
     manifest: {
