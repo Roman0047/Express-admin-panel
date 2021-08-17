@@ -34,6 +34,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
     '@nuxtjs/auth',
+    '@nuxtjs/toast',
   ],
 
   auth: {
@@ -57,6 +58,19 @@ export default {
     manifest: {
       lang: 'en'
     }
+  },
+
+  toast: {
+    position: 'bottom-left',
+    register: [
+      {
+        name: 'my-error',
+        message: 'Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
   },
 
   axios: {

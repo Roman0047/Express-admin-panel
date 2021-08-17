@@ -29,9 +29,7 @@ export default {
     remove() {
       this.$services.types.remove(this.type._id).then(response => {
         this.$emit('update-list')
-      }, (error) => {
-        console.log('error', error);
-      })
+      }, errors => this.setErrors(errors))
     }
   }
 }

@@ -135,10 +135,7 @@ export default {
         this.$services.products.save(data).then(response => {
           this.$router.push({name: 'products'})
           this.loading = false
-        }, (error) => {
-          this.loading = false
-          console.log('error', error);
-        })
+        }, errors => this.setErrors(errors))
       }
     },
     readURL() {

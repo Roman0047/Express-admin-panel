@@ -35,9 +35,7 @@ export default {
     remove() {
       this.$services.products.remove(this.product._id).then(response => {
         this.$emit('update-list')
-      }, (error) => {
-        console.log('error', error);
-      })
+      }, errors => this.setErrors(errors))
     }
   }
 }

@@ -78,10 +78,7 @@ export default {
         this.$services.types.save(this.type).then(response => {
           this.$router.push({name: 'types'})
           this.loading = false
-        }, (error) => {
-          this.loading = false
-          console.log('error', error);
-        })
+        }, errors => this.setErrors(errors))
       }
     },
   }

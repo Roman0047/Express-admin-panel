@@ -50,9 +50,7 @@ export default {
     updateList() {
       this.$services.types.list().then(response => {
         this.types = response
-      }, (error) => {
-        console.log('error', error);
-      })
+      }, errors => this.setErrors(errors))
     }
   }
 }

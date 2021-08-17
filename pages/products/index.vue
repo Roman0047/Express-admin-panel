@@ -50,9 +50,7 @@ export default {
     updateList() {
       this.$services.products.list().then(response => {
         this.products = response
-      }, (error) => {
-        console.log('error', error);
-      })
+      }, errors => this.setErrors(errors))
     }
   }
 }
