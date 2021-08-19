@@ -15,6 +15,10 @@
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
+      <v-spacer></v-spacer>
+      <v-btn :ripple="false" @click="$auth.logout('/login')" dark plain>
+        Logout
+      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -26,6 +30,8 @@
 
 <script>
 export default {
+  name: 'Default',
+  middleware: 'auth',
   data () {
     return {
       clipped: true,

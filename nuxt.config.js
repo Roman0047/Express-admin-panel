@@ -43,7 +43,7 @@ export default {
       local: {
         endpoints: {
           login: { url: '/api/login', method: 'post', propertyName: 'token' },
-          user: { url: '/api/profile', method: 'get', propertyName: 'user' },
+          user: { url: '/api/profile', method: 'get', propertyName: '' },
           logout: false
         },
       }
@@ -62,12 +62,14 @@ export default {
 
   toast: {
     position: 'bottom-left',
+    duration: 3000,
     register: [
       {
-        name: 'my-error',
+        name: 'error',
         message: 'Something went wrong',
         options: {
-          type: 'error'
+          type: 'error',
+          duration: 3000,
         }
       }
     ]

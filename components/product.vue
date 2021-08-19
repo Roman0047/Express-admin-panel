@@ -3,8 +3,12 @@
     <v-card class="product-card">
       <v-img :src="'http://localhost:8097/' + product.images[0]" height="200px"></v-img>
       <v-card-title class="product-card-price">
-        <span v-if="product.priceWithDiscount">{{ product.priceWithDiscount }}$</span>
-        <span :class="{'product-card-price-old': product.priceWithDiscount}">{{ product.price }}$</span>
+        <span v-if="product.priceWithDiscount || product.priceWithDiscount === 0">
+          {{ product.priceWithDiscount }}$
+        </span>
+        <span :class="{'product-card-price-old': product.priceWithDiscount || product.priceWithDiscount === 0}">
+          {{ product.price }}$
+        </span>
       </v-card-title>
       <div class="product-card-title-wrapper">
         <v-card-title>{{ product.title }}</v-card-title>

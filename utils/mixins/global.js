@@ -15,6 +15,7 @@ let global = {
         this.errors = errors.response.data.errors
         return
       }
+      this.errors = []
       if (errors.response.data.error) {
         this.$toast.error(errors.response.data.error)
         return

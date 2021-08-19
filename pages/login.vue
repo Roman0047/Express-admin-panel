@@ -28,9 +28,11 @@ export default {
   },
   methods: {
     login() {
+      this.loading = true
       this.$auth.loginWith('local', { data: this.loginForm }).then(async response => {
-        this.$auth.setUser(response.data)
+        this.$auth.setUser(response)
         await this.$auth.fetchUser()
+        this.loading = false
       }, errors => this.setErrors(errors))
     },
   }

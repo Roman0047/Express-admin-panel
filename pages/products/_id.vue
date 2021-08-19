@@ -84,13 +84,13 @@ export default {
       }
       if (parseInt(params.id) !== 0) {
         product = await app.$services.products.get(params.id)
-        product.type = product.type._id
+        product.type = product.type ? product.type._id : null
       }
       const types = await app.$services.types.list()
       return {
         product,
         types,
-        url: 'http://localhost:8097/' + product.images[0]
+        url: product.images ? 'http://localhost:8097/' + product.images[0] : ''
       }
     } catch (asyncError) {
       console.log('async error', asyncError);
@@ -111,11 +111,15 @@ export default {
       rules: {
         title: [v => !!v || 'Name is required'],
         description: [v => !!v || 'Description is required'],
-        image: [v => !!v || 'Image is required'],
         price: [v => !!v || 'Price is required'],
         type: [v => !!v || 'Type is required'],
       },
       valid: false
+    }
+  },
+  mounted() {
+    if (parseInt(this.$route.params.id) === 0) {
+      this.rules.image = [v => !!v || 'Image is required']
     }
   },
   methods: {
@@ -124,6 +128,9 @@ export default {
       let data = new FormData()
       let self = this
       files.forEach(item => data.append(`files`, item))
+      if (parseInt(this.$route.params.id) !== 0) {
+        data.append(`image`, self.product.images[0])
+      }
       data.append(`title`, self.product.title)
       data.append(`description`, self.product.description)
       data.append(`price`, self.product.price)

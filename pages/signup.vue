@@ -34,13 +34,15 @@ export default {
   },
   methods: {
     signup() {
+      this.loading = true
       this.$services.auth.signup(this.signupForm).then(response => {
         let data = {
           email: this.signupForm.email,
           password: this.signupForm.password
         }
-
-        this.$auth.loginWith('local', { data: data }).then(response => {
+        this.$auth.loginWith('local', { data: data }).then(async response => {
+          this.$auth.setUser(response)
+          await this.$auth.fetchUser()
           this.loading = false
         }, errors => this.setErrors(errors))
       }, errors => this.setErrors(errors))
