@@ -39,7 +39,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Dashboard',
+          title: 'History',
           to: '/'
         },
         {

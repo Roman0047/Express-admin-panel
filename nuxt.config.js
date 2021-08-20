@@ -27,6 +27,7 @@ export default {
 
   buildModules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/moment',
   ],
 
   modules: [
@@ -35,7 +36,11 @@ export default {
     '@nuxtjs/proxy',
     '@nuxtjs/auth',
     '@nuxtjs/toast',
+    'nuxt-clipboard',
   ],
+  clipboard: {
+    autoSetContainer: true
+  },
 
   auth: {
     watchLoggedIn: true,

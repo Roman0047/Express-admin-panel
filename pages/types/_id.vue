@@ -30,6 +30,7 @@
             :rules="rules.discount"
             label="Discount"
             required
+            max="100"
           ></v-text-field>
         </div>
       </v-form>
@@ -65,7 +66,10 @@ export default {
       },
       rules: {
         name: [v => !!v || 'Name is required'],
-        discount: [v => !!v || 'Discount is required'],
+        discount: [
+          v => !!v || 'Discount is required',
+          v => ( v && v <= 100 ) || "The percentage should not be higher than 100%.",
+        ],
       },
       valid: false
     }
