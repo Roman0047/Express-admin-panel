@@ -6,10 +6,9 @@
         <div class="item-card-id" @click="copyId">{{ getId(item.item_id) }}</div>
       </div>
       <div class="text-subtitle-1 pb-4 px-4">
-        {{item.created_at ? 'created at: ' : ''}}
-        {{item.updated_at ? 'updated at: ' : ''}}
-        {{item.deleted_at ? 'deleted at: ' : ''}}
-        {{ $moment(item.created_at).format('DD-MM-YYYY hh:mm') }}
+        {{item.created_at ? 'created at: ' + $moment(item.created_at).format('DD-MM-YYYY HH:mm') : ''}}
+        {{item.updated_at ? 'updated at: ' + $moment(item.updated_at).format('DD-MM-YYYY HH:mm') : ''}}
+        {{item.deleted_at ? 'deleted at: ' + $moment(item.deleted_at).format('DD-MM-YYYY HH:mm') : ''}}
       </div>
       <v-card-subtitle class="pt-0">{{ item.type }}</v-card-subtitle>
     </v-card>
